@@ -1,0 +1,25 @@
+{
+  "name": "to-do-list",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "@fastify/cors": "^10.0.1",
+    "@fastify/formbody": "^8.0.1",
+    "@fastify/swagger": "^9.0.0",
+    "@fastify/swagger-ui": "^5.0.1",
+    "@types/node": "^22.5.5",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "fastify": "^5.0.0",
+    "mysql2": "^3.11.3",
+    "nodemon": "^3.1.7",
+    "sequelize": "^6.37.3",
+    "ts-node": "^10.9.2"
+  }
+}

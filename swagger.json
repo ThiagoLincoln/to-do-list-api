@@ -1,0 +1,182 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API de Tarefas",
+      "description": "Documentação da API para gerenciamento de tarefas",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:8080"
+      }
+    ],
+    "paths": {
+      "/tarefas": {
+        "get": {
+          "summary": "Lista todas as tarefas",
+          "responses": {
+            "200": {
+              "description": "Lista de tarefas",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "integer" },
+                        "task": { "type": "string" },
+                        "completed": { "type": "boolean" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Cria uma nova tarefa",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "task": { "type": "string" },
+                    "completed": { "type": "boolean" }
+                  },
+                  "required": ["task", "completed"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Tarefa criada",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "integer" },
+                      "task": { "type": "string" },
+                      "completed": { "type": "boolean" }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Campos obrigatórios não informados"
+            }
+          }
+        }
+      },
+      "/tarefas/{id}": {
+        "get": {
+          "summary": "Obtém uma tarefa pelo ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Tarefa encontrada",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "integer" },
+                      "task": { "type": "string" },
+                      "completed": { "type": "boolean" }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Tarefa não encontrada"
+            }
+          }
+        },
+        "put": {
+          "summary": "Atualiza uma tarefa pelo ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "task": { "type": "string" },
+                    "completed": { "type": "boolean" }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Tarefa atualizada",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "integer" },
+                      "task": { "type": "string" },
+                      "completed": { "type": "boolean" }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Tarefa não encontrada"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deleta uma tarefa pelo ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Tarefa deletada com sucesso"
+            },
+            "404": {
+              "description": "Tarefa não encontrada"
+            }
+          }
+        }
+      }
+    }
+  }
+  
